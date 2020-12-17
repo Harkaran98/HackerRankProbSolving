@@ -9,8 +9,8 @@ import java.util.List;
 public class Implementation {
 
     public static void main(String[] args){
-
-
+    int[][] a=new int[2][3];
+    System.out.println(a.length);
 
 
     }
@@ -182,6 +182,62 @@ public class Implementation {
         return arr.length-max;
 
     }
+
+    // Complete the repeatedString function below.
+    static long repeatedString(String s, long n) {
+        //No of a's in s
+        int a = 0;
+        for (int i = 0; i < s.length(); i++) if (s.charAt(i) == 'a') a++;
+        //No of a's in n%s.length
+        int mod = 0;
+        for (int i = 0; i < n % s.length(); i++) if (s.charAt(i) == 'a') mod++;
+
+        //return no of a's in complete repeated strings + no of a's in the extra string
+        return ((n / s.length()) * a) + mod;
+
+
+    }
+
+  
+    static int camelcase(String s) {
+        int count=1;
+        for(int i=0;i<s.length();i++){
+            int j=s.charAt(i);
+            if(j<91)count++;
+        }
+        if(s.equals(""))return 0;
+        return count;
+
+    }
+
+    // Complete the arrayManipulation function below.
+    static long arrayManipulation(int n, int[][] queries) {
+        long[] ar=new long[n];
+        for(int i=0;i<queries.length;i++){
+            int a=queries[i][0];
+            int b=queries[i][1];
+            int add=queries[i][2];
+            ar[a-1]+=add;
+            if(b<n)
+                ar[b-1+1]-=add;
+            // for(int k=a-1;k<=b-1;k++){//BRUTE FORCE
+            //     ar[k]+=add;
+
+        }
+
+        for(int i=1;i<n;i++){
+            ar[i]=ar[i-1]+ar[i];
+
+        }
+
+
+        long max=Integer.MIN_VALUE;
+        for(long i:ar)if(max<i)max=i;
+
+        return max;
+
+    }
+
 
 }
 
