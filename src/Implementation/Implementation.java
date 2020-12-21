@@ -1,16 +1,14 @@
 package Implementation;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Implementation {
 
     public static void main(String[] args){
-    int[][] a=new int[2][3];
-    System.out.println(a.length);
+        String s="101",s1="10";
+        s=String.valueOf(Integer.parseInt(s) | Integer.parseInt(s1));
+        
 
 
     }
@@ -238,6 +236,31 @@ public class Implementation {
 
     }
 
+    static String superReducedString(String s) {
+
+        StringBuilder sb=new StringBuilder(s);
+
+        for(int i=0;i<sb.length();i++) {
+            System.out.println("i- "+i + " Char- "+sb.charAt(i)+ " String- "+sb);
+            if (i+1<=sb.length()-1 && sb.charAt(i) == sb.charAt(i + 1)){
+                sb.delete(i,i+2);
+                //sb.replace(i,i+2,"  ");
+            }
+
+            System.out.println("i- "+i + " Char- "+sb.charAt(i)+ " String- "+sb);
+
+            if (i>=1 && i<=sb.length()-1 && sb.charAt(i - 1) == sb.charAt(i)){
+               sb.delete(i-1,i+1);
+                // sb.replace(i-1,i+1,"  ");
+
+
+            }
+        System.out.println(sb);
+        }
+
+
+        return sb.toString().equals("") ? "Empty String":sb.toString();
+    }
 
 }
 
